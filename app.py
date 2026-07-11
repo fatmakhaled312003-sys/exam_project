@@ -237,3 +237,15 @@ if generate_button:
         st.markdown("---") # فاصل بين النماذج
 
        # ضعي هذا الكود في آخر سطر في ملفك
+# --- بداية الجزء الجديد ---
+if st.button("إنشاء الاختبار"):
+    if selected_surahs:
+        chosen_questions = random.sample(questions_bank, 3)
+        exam_content = f"اختبار في سور: {', '.join(selected_surahs)}\n\n" + "\n".join(chosen_questions)
+        st.write(exam_content)
+        
+        pdf_data = create_pdf(exam_content)
+        st.download_button("📥 تحميل الـ PDF", pdf_data, "exam.pdf", "application/pdf")
+    else:
+        st.warning("يرجى اختيار سورة واحدة على الأقل!")
+# --- نهاية الجزء الجديد ---
