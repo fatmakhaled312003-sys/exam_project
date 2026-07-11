@@ -12,8 +12,10 @@ def create_pdf(text_content):
     pdf.set_font("Arial", size=14)
     reshaped_text = arabic_reshaper.reshape(text_content)
     bidi_text = get_display(reshaped_text)
-    pdf.multi_cell(0, 10, txt=bidi_text)
-    return pdf.output() 
+    pdf.multi_cell(0, 10, txt=bidi_text.encode('latin-1', 'replace').decode('latin-1'))
+    
+    return pdf.output(dest='S')
+
 st.title("صانع اختبارات القرآن الكريم")
 
 questions_bank = ["آية 1...", "آية 2...", "آية 3...", "آية 4...", "آية 5...", "آية 6..."]
