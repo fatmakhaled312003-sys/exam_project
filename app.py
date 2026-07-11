@@ -34,7 +34,7 @@ if st.button("إنشاء وتنزيل النموذج كـ PDF"):
         
         pdf_data = create_pdf(exam_content)
         st.download_button("📥 تحميل الـ PDF", pdf_data, "exam.pdf", "application/pdf")
-    else:
+     else:
         st.warning("يرجى اختيار سورة واحدة على الأقل!")
 
 # قاعدة بيانات تحتوي على جميع سور المصحف الشريف (114 سورة)
