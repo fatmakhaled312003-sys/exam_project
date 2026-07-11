@@ -21,7 +21,6 @@ def create_pdf(text_content):
 st.title("صانع اختبارات القرآن الكريم")
 
 all_surahs = ["الفاتحة", "البقرة", "آل عمران", "النساء", "المائدة", "الأنعام"]
-selected_surahs = st.multiselect("اختر سور الاختبار", all_surahs, default=[])
 
 st.subheader("اقرأ الآيات التالية :")
 
@@ -162,7 +161,7 @@ def write_rtl(text, size="18px", color="#000000", is_bold=False, align="right"):
 
 st.sidebar.header("⚙️ إعدادات وتصميم الورقة")
 exam_type = st.sidebar.selectbox("اختر نوع الاختبار:", ["الدوري الأول", "الدوري الثاني", "نصف العام", "آخر العام"])
-selected_suwar = st.sidebar.multiselect("اختر سور الاختبار:", list(suwar_database.keys()), default=["النبأ", "النازعات"])
+selected_suwar = st.sidebar.multiselect("اختر سور الاختبار:", list(suwar_database.keys()), default=[])
 
 # تحديث: اختيار عدد النماذج
 num_models = st.sidebar.number_input("أدخل عدد النماذج المطلوبة:", min_value=1, max_value=50, value=1)
