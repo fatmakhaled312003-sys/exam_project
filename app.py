@@ -172,7 +172,7 @@ level_option = st.sidebar.radio("حدد المستوى الحالي:", ["تمه�
 st.sidebar.subheader("📋 تفعيل المحاور")
 include_tarbawy = st.sidebar.checkbox("تفعيل محور (ثانياً: التربوي)", value=True)
 include_tafsir = st.sidebar.checkbox("تفعيل محور (ثالثاً: التفسير الإجمالي)", value=True)
-custom_tafsir_verse = st.sidebar.text_input("آية التفسير:", value="[]")
+custom_tafsir_verse = st.sidebar.text_input("آية التفسير:", value="")
 include_meaning = st.sidebar.checkbox("تفعيل محور (رابعاً: معاني الكلمات)", value=True)
 
 st.sidebar.subheader("📊 عدد مقاطع التسميع")
