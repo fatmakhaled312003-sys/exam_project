@@ -24,7 +24,7 @@ questions_bank = ["آية 1...", "آية 2...", "آية 3...", "آية 4...", "�
 
 chosen_questions = random.sample(questions_bank, 3)
 exam_content = "اختبار القرآن الكريم:\n\n" + "\n".join(chosen_questions)
-st.write(exam_content)
+#st.write(exam_content)
 
 pdf_data = create_pdf(exam_content)
 st.download_button("📥 تحميل الـ PDF", pdf_data, "exam.pdf", "application/pdf")
