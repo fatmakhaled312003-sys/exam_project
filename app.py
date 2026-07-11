@@ -255,8 +255,4 @@ st.markdown("""
         border: none;
         width: 100%;
     }
-    </style>
-    
-    <!-- زر الطباعة -->
-    <button onclick="window.print()" class="print-button">🖨️ اضغطي هنا لطباعة النموذج أو حفظه PDF</button>
-""", unsafe_allow_html=True)
+   
