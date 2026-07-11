@@ -1,8 +1,42 @@
 import streamlit as st
-import random
  
 # إعدادات الصفحة
 st.set_page_config(page_title="صانع اختبارات القرآن الكريم الاحترافي", layout="wide")
+
+from fpdf import FPDF
+import arabic_reshaper
+from bidi.algorithm import get_display
+import random
+
+# دالة PDF تدعم العربية
+def create_pdf(text_content):
+    pdf = FPDF()
+    pdf.add_page()
+    pdf.set_font("Arial", size=14)
+    reshaped_text = arabic_reshaper.reshape(text_content)
+    bidi_text = get_display(reshaped_text)
+    pdf.multi_cell(0, 10, txt=bidi_text)
+    return pdf.output(dest='S').encode('latin-1')
+
+st.title("صانع اختبارات القرآن الكريم")
+
+all_surahs = ["الفاتحة", "البقرة", "آل عمران", "النساء", "المائدة", "الأنعام"]
+selected_surahs = st.multiselect("اختر سور الاختبار", all_surahs, default=[])
+
+st.subheader("اقرأ الآيات التالية :")
+
+questions_bank = ["آية 1...", "آية 2...", "آية 3...", "آية 4...", "آية 5...", "آية 6..."]
+
+if st.button("إنشاء وتنزيل النموذج كـ PDF"):
+    if selected_surahs:
+        chosen_questions = random.sample(questions_bank, min(len(questions_bank), 3))
+        exam_content = f"اختبار في سور: {', '.join(selected_surahs)}\n\n" + "\n".join(chosen_questions)
+        st.write(exam_content)
+        
+        pdf_data = create_pdf(exam_content)
+        st.download_button("📥 تحميل الـ PDF", pdf_data, "exam.pdf", "application/pdf")
+    else:
+        st.warning("يرجى اختيار سورة واحدة على الأقل!")
 
 # قاعدة بيانات تحتوي على جميع سور المصحف الشريف (114 سورة)
 suwar_database = {
