@@ -16,7 +16,7 @@ def create_pdf(text_content):
     reshaped_text = arabic_reshaper.reshape(text_content)
     bidi_text = get_display(reshaped_text)
     pdf.multi_cell(0, 10, txt=bidi_text)
-    return pdf.output(dest='S')
+    return pdf.output(dest='S').encode('latin-1', 'replace')
 
 st.title("صانع اختبارات القرآن الكريم")
 
