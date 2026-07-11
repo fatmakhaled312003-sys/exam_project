@@ -167,12 +167,12 @@ selected_suwar = st.sidebar.multiselect("اختر سور الاختبار:", lis
 num_models = st.sidebar.number_input("أدخل عدد النماذج المطلوبة:", min_value=1, max_value=50, value=1)
 
 grade_option = st.sidebar.selectbox("حدد الفرقة الدراسية:", [f"الفرقة {f}" for f in ["الأولى", "الثانية", "الثالثة", "الرابعة", "الخامسة", "السادسة", "السابعة", "الثامنة", "التاسعة", "العاشرة"]])
-level_option = st.sidebar.radio("حدد المستوى الحالي:", ["صغار", "متوسط", "كبار"])
+level_option = st.sidebar.radio("حدد المستوى الحالي:", ["تمهيدي","صغار", "متوسط", "كبار"])
 
 st.sidebar.subheader("📋 تفعيل المحاور")
 include_tarbawy = st.sidebar.checkbox("تفعيل محور (ثانياً: التربوي)", value=True)
 include_tafsir = st.sidebar.checkbox("تفعيل محور (ثالثاً: التفسير الإجمالي)", value=True)
-custom_tafsir_verse = st.sidebar.text_input("آية التفسير:", value="[ عَمَّ يَتَسَاءَلُونَ (١) ]")
+custom_tafsir_verse = st.sidebar.text_input("آية التفسير:", value="[]")
 include_meaning = st.sidebar.checkbox("تفعيل محور (رابعاً: معاني الكلمات)", value=True)
 
 st.sidebar.subheader("📊 عدد مقاطع التسميع")
