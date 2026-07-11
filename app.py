@@ -198,12 +198,12 @@ if generate_button:
         for i in range(q_start_count):
             sura = random.choice(selected_suwar)
             macta = random.choice(suwar_database[sura]["start"])
-            write_rtl(f"<b>س {q_index}:</b> اكتب مستعيناً بالله تعالى من <b>سورة {sura}</b> من قوله تعالى: [ {macta['from']} ] إلى قوله تعالى: [ {macta['to']} ].", size="17px")
+            write_rtl(f"<b>س {q_index}:</b> اقرأ مستعيناً بالله تعالى من <b>سورة {sura}</b> من قوله تعالى: [ {macta['from']} ] إلى قوله تعالى: [ {macta['to']} ].", size="17px")
             q_index += 1
         for j in range(q_middle_count):
             sura = random.choice(selected_suwar)
             macta = random.choice(suwar_database[sura]["middle"])
-            write_rtl(f"<b>س {q_index}:</b> اكتب مستعيناً بالله تعالى من <b>سورة {sura}</b> من قوله تعالى: [ {macta['from']} ] إلى قوله تعالى: [ {macta['to']} ].", size="17px")
+            write_rtl(f"<b>س {q_index}:</b> اقرأ مستعيناً بالله تعالى من <b>سورة {sura}</b> من قوله تعالى: [ {macta['from']} ] إلى قوله تعالى: [ {macta['to']} ].", size="17px")
             q_index += 1
 
         if include_tarbawy:
