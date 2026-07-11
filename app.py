@@ -9,14 +9,18 @@ st.set_page_config(page_title="صانع اختبارات القرآن الكري
 def create_pdf(text_content):
     pdf = FPDF()
     pdf.add_page() 
+    # إضافة الخط العربي
     pdf.add_font("Amiri", "", "Amiri-Regular.ttf", uni=True)
     pdf.set_font("Amiri", size=14)
     
+    # المعالجة
     reshaped_text = arabic_reshaper.reshape(text_content)
     bidi_text = get_display(reshaped_text)
     
     pdf.multi_cell(0, 10, txt=bidi_text)
-    return pdf.output(dest='S')
+    
+    # الحل: تحويل المخرجات لـ bytes
+    return pdf.output()
     
 st.title("صانع اختبارات القرآن الكريم")
 
