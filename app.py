@@ -35,7 +35,7 @@ if st.button("إنشاء الاختبار"):
         
         # هنا يتم إنشاء ملف الـ PDF وتفعيل زر التحميل
         pdf_data = create_pdf(exam_content)
-        st.download_button("📥 تحميل الـ PDF", pdf_data, "exam.pdf", "application/pdf")
+       st.download_button("📥 تحميل الـ PDF", pdf_data, "exam.pdf", "application/pdf")
     else:
         # رسالة تنبيه في حال لم يتم اختيار سور
         st.warning("يرجى اختيار سورة واحدة على الأقل!")
