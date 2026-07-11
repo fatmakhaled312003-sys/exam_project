@@ -9,13 +9,15 @@ st.set_page_config(page_title="صانع اختبارات القرآن الكري
 def create_pdf(text_content):
     pdf = FPDF()
     pdf.add_page() 
-    pdf.set_font("Arial", size=14)
+    pdf.add_font("Amiri", "", "Amiri-Regular.ttf", uni=True)
+    pdf.set_font("Amiri", size=14)
+    
     reshaped_text = arabic_reshaper.reshape(text_content)
     bidi_text = get_display(reshaped_text)
-    pdf.multi_cell(0, 10, txt=bidi_text.encode('latin-1', 'replace').decode('latin-1'))
     
+    pdf.multi_cell(0, 10, txt=bidi_text)
     return pdf.output(dest='S')
-
+    
 st.title("صانع اختبارات القرآن الكريم")
 
 questions_bank = ["آية 1...", "آية 2...", "آية 3...", "آية 4...", "آية 5...", "آية 6..."]
