@@ -187,7 +187,7 @@ if generate_button:
         st.markdown(f"<h3 style='text-align: center; border-bottom: 2px solid #ccc;'>نموذج رقم ({model_index})</h3>", unsafe_allow_html=True)
         
         st.markdown("<div style='border: 2px solid #000; padding: 15px; border-radius: 8px; background-color: #FAFAFA;'>", unsafe_allow_html=True)
-        write_rtl(f"امتحان {exam_type} للعام القراني &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; التاريخ: ............ ١٤هـ &nbsp;&nbsp; - &nbsp;&nbsp; ............ ٢٠م", size="20px", is_bold=True, align="center")
+        write_rtl(f"امتحان {exam_type}  للعام القرآني  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; التاريخ: ............ ١٤هـ &nbsp;&nbsp; - &nbsp;&nbsp; ............ ٢٠م", size="20px", is_bold=True, align="center")
         st.markdown("<hr style='border-top: 1px dashed #000; margin: 10px 0;'>", unsafe_allow_html=True)
         write_rtl(f"<b>الفرقة:</b> {grade_option} &nbsp;&nbsp;|&nbsp;&nbsp; <b>المستوى:</b> {level_option} &nbsp;&nbsp;|&nbsp;&nbsp; <b>رقم الحلقة:</b> ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>اسم الطالب:</b> ...................................................................", size="16px", align="right")
         st.markdown("</div>", unsafe_allow_html=True)
