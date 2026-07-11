@@ -27,16 +27,15 @@ questions_bank = ["آية 1...", "آية 2...", "آية 3...", "آية 4...", "�
 
 # كود إنشاء الاختبار وتنزيل الـ PDF
 if st.button("إنشاء الاختبار"):
-    if selected_surahs:
-        # هنا يتم سحب الأسئلة وتجهيز المحتوى
-        chosen_questions = random.sample(questions_bank, 3)
-        exam_content = f"اختبار في سور: {', '.join(selected_surahs)}\n\n" + "\n".join(chosen_questions)
-        st.write(exam_content)
-        
-        # هنا يتم إنشاء ملف الـ PDF وتفعيل زر التحميل
-        pdf_data = create_pdf(exam_content)
-     st.download_button("📥 تحميل الـ PDF", pdf_data, "exam.pdf", "application/pdf")
-    else:
+ if selected_surahs:
+   # هنا يتم سحب الأسئلة وتجهيز المحتوى
+   chosen_questions = random.sample(questions_bank, 3)
+    exam_content = f"اختبار في سور: {', '.join(selected_surahs)}\n\n" + "\n".join(chosen_questions)
+    st.write(exam_content)
+    # هنا يتم إنشاء ملف الـ PDF وتفعيل زر التحميل
+   pdf_data = create_pdf(exam_content)
+    st.download_button("📥 تحميل الـ PDF", pdf_data, "exam.pdf", "application/pdf")
+      else:
         # رسالة تنبيه في حال لم يتم اختيار سور
         st.warning("يرجى اختيار سورة واحدة على الأقل!")
 
