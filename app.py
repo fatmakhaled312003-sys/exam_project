@@ -9,14 +9,17 @@ from bidi.algorithm import get_display
 import random
 
 # دالة PDF تدعم العربية
+from fpdf import FPDF # لاحظي أننا نستخدم fpdf2 الآن
+
 def create_pdf(text_content):
     pdf = FPDF()
     pdf.add_page()
+    # fpdf2 تتعامل مع النصوص العربية بشكل أفضل
     pdf.set_font("Arial", size=14)
     reshaped_text = arabic_reshaper.reshape(text_content)
     bidi_text = get_display(reshaped_text)
     pdf.multi_cell(0, 10, txt=bidi_text)
-    return pdf.output(dest='S').encode('latin-1', 'replace')
+  return pdf.output() # هنا لن نستخدم latin-1 أبداً
 
 st.title("صانع اختبارات القرآن الكريم")
 
