@@ -1,26 +1,19 @@
 import streamlit as st
- 
-# إعدادات الصفحة
-st.set_page_config(page_title="صانع اختبارات القرآن الكريم الاحترافي", layout="wide")
-
 from fpdf import FPDF
 import arabic_reshaper
 from bidi.algorithm import get_display
-import random
+import random 
 
-# دالة PDF تدعم العربية
-from fpdf import FPDF # لاحظي أننا نستخدم fpdf2 الآن
+st.set_page_config(page_title="صانع اختبارات القرآن الكريم الاحترافي", layout="wide")
 
 def create_pdf(text_content):
     pdf = FPDF()
-    pdf.add_page()
-    # fpdf2 تتعامل مع النصوص العربية بشكل أفضل
+    pdf.add_page() 
     pdf.set_font("Arial", size=14)
     reshaped_text = arabic_reshaper.reshape(text_content)
     bidi_text = get_display(reshaped_text)
     pdf.multi_cell(0, 10, txt=bidi_text)
-    return pdf.output() # هنا لن نستخدم latin-1 أبداً
-
+    return pdf.output() 
 st.title("صانع اختبارات القرآن الكريم")
 
 questions_bank = ["آية 1...", "آية 2...", "آية 3...", "آية 4...", "آية 5...", "آية 6..."]
