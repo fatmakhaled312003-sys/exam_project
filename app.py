@@ -23,7 +23,7 @@ st.title("صانع اختبارات القرآن الكريم")
 questions_bank = ["آية 1...", "آية 2...", "آية 3...", "آية 4...", "آية 5...", "آية 6..."]
 
 # كود تحميل الـ PDF مباشرة عند الاختيار
- if selected_surahs:
+if selected_surahs:
     chosen_questions = random.sample(questions_bank, 3)
     exam_content = f"اختبار في سور: {', '.join(selected_surahs)}\n\n" + "\n".join(chosen_questions)
     st.write(exam_content)
