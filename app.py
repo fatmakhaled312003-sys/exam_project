@@ -32,8 +32,13 @@ chosen_questions = random.sample(questions_bank, 3)
 exam_content = "اختبار القرآن الكريم:\n\n" + "\n".join(chosen_questions)
 #st.write(exam_content)
 
-pdf_data = create_pdf(exam_content)
-st.download_button("📥 تحميل الـ PDF", pdf_data, "exam.pdf", "application/pdf")
+pdf_data = bytes(create_pdf(exam_content))
+st.download_button(
+    label="📥 تحميل الـ PDF",
+    data=pdf_data,
+    file_name="exam.pdf",
+    mime="application/pdf"
+)
    
 # قاعدة بيانات تحتوي على جميع سور المصحف الشريف (114 سورة)
 suwar_database = {
