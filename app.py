@@ -237,21 +237,3 @@ if generate_button:
         st.markdown("---") # فاصل بين النماذج
 
        # ضعي هذا الكود في آخر سطر في ملفك
-st.markdown("---")  # هذا يرسم خطاً فاصلاً قبل الزر
-st.markdown("""
-    <style>
-    /* تنسيق الزر ليظهر بشكل جميل */
-    .print-button {
-        background-color: #4CAF50;
-        color: white;
-        padding: 12px 24px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 20px 0;
-        cursor: pointer;
-        border-radius: 8px;
-        border: none;
-        width: 100%;
-    }
