@@ -27,7 +27,7 @@ st.subheader("اقرأ الآيات التالية :")
 questions_bank = ["آية 1...", "آية 2...", "آية 3...", "آية 4...", "آية 5...", "آية 6..."]
 
 if st.button("إنشاء وتنزيل النموذج كـ PDF"):
-    if selected_surahs:
+   if selected_surahs:
         chosen_questions = random.sample(questions_bank, min(len(questions_bank), 3))
         exam_content = f"اختبار في سور: {', '.join(selected_surahs)}\n\n" + "\n".join(chosen_questions)
         st.write(exam_content)
@@ -235,17 +235,3 @@ if generate_button:
         """, unsafe_allow_html=True)
 
         st.markdown("---") # فاصل بين النماذج
-
-       # ضعي هذا الكود في آخر سطر في ملفك
-# --- بداية الجزء الجديد ---
-if st.button("إنشاء الاختبار"):
-    if selected_surahs:
-        chosen_questions = random.sample(questions_bank, 3)
-        exam_content = f"اختبار في سور: {', '.join(selected_surahs)}\n\n" + "\n".join(chosen_questions)
-        st.write(exam_content)
-        
-        pdf_data = create_pdf(exam_content)
-        st.download_button("📥 تحميل الـ PDF", pdf_data, "exam.pdf", "application/pdf")
-    else:
-        st.warning("يرجى اختيار سورة واحدة على الأقل!")
-# --- نهاية الجزء الجديد ---
