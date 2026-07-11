@@ -22,17 +22,17 @@ st.title("صانع اختبارات القرآن الكريم")
 
 questions_bank = ["آية 1...", "آية 2...", "آية 3...", "آية 4...", "آية 5...", "آية 6..."]
 
-# كود إنشاء الاختبار وتنزيل الـ PDF
-if st.button("إنشاء الاختبار وتنزيل الـ PDF"):
-    if selected_surahs:
-        chosen_questions = random.sample(questions_bank, 3)
-        exam_content = f"اختبار في سور: {', '.join(selected_surahs)}\n\n" + "\n".join(chosen_questions)
-        st.write(exam_content)
-        pdf_data = create_pdf(exam_content)
-        st.download_button("📥 تحميل الـ PDF", pdf_data, "exam.pdf", "application/pdf")
-    else:
-        st.warning("يرجى اختيار سورة واحدة على الأقل!")
-
+# كود تحميل الـ PDF مباشرة عند الاختيار
+if selected_surahs:
+    chosen_questions = random.sample(questions_bank, 3)
+    exam_content = f"اختبار في سور: {', '.join(selected_surahs)}\n\n" + "\n".join(chosen_questions)
+    st.write(exam_content)
+    
+    pdf_data = create_pdf(exam_content)
+    st.download_button("📥 تحميل الـ PDF", pdf_data, "exam.pdf", "application/pdf")
+else:
+    st.info("يرجى اختيار سورة من القائمة الجانبية لتظهر أيقونة التحميل.")
+    
 # قاعدة بيانات تحتوي على جميع سور المصحف الشريف (114 سورة)
 suwar_database = {
     "الفاتحة": {"start": [{"from": "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ (٢)", "to": "إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ (٥)"}], "middle": [{"from": "إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ (٥)", "to": "صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ (٧)"}]},
