@@ -222,17 +222,19 @@ if generate_button:
         write_rtl("أولاً: أسئلة القرآن الكريم:", size="18px", is_bold=True, color="#1E3A8A")
         
         q_index = 1
-        for i in range(q_start_count):
-    while True:
+       for i in range(q_start_count):
+        while True:
         sura = random.choice(selected_suwar)
-        macta = random.choice(suwar_database[sura]["start"])
+        maqta = random.choice(suwar_database[sura]["start"])
 
-        key = (sura, macta["from"], macta["to"])
+        key = (sura, maqta["from"], maqta["to"])
+
         if key not in used_questions:
             used_questions.add(key)
             break
-            write_rtl(f"<b>س {q_index}:</b> اقرأ مستعيناً بالله تعالى من <b>سورة {sura}</b> من قوله تعالى: [ {macta['from']} ] إلى قوله تعالى: [ {macta['to']} ].", size="17px")
-            q_index += 1
+
+    write_rtl(...)
+    q_index += 1
        for j in range(q_middle_count):
     while True:
         sura = random.choice(selected_suwar)
