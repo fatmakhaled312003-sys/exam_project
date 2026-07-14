@@ -3,7 +3,7 @@ from fpdf import FPDF
 import arabic_reshaper
 from bidi.algorithm import get_display
 import random 
-import cop
+import copy
 
 used_questions = set()
 
