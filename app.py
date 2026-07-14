@@ -269,4 +269,4 @@ if include_meaning:
         </div>
         """, unsafe_allow_html=True)
 
-        st.markdown("---") # فاصل بين النماذج
+st.markdown("---") # فاصل بين النماذج
