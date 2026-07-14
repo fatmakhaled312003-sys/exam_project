@@ -212,45 +212,61 @@ if generate_button:
 
     for model_index in range(1, num_models + 1):
         st.markdown(f"<h3 style='text-align: center; border-bottom: 2px solid #ccc;'>نموذج رقم ({model_index})</h3>", unsafe_allow_html=True)
-
+        
         st.markdown("<div style='border: 2px solid #000; padding: 15px; border-radius: 8px; background-color: #FAFAFA;'>", unsafe_allow_html=True)
-        write_rtl(f"امتحان {exam_type} للعام القرآني ...", size="20px", is_bold=True, align="center")
+        write_rtl(f"امتحان {exam_type}  للعام القرآني  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; التاريخ: ............ ١٤هـ &nbsp;&nbsp; - &nbsp;&nbsp; ............ ٢٠م", size="20px", is_bold=True, align="center")
         st.markdown("<hr style='border-top: 1px dashed #000; margin: 10px 0;'>", unsafe_allow_html=True)
-        write_rtl(f"<b>الفرقة:</b> {grade_option} ...", size="16px", align="right")
+        write_rtl(f"<b>الفرقة:</b> {grade_option} &nbsp;&nbsp;|&nbsp;&nbsp; <b>المستوى:</b> {level_option} &nbsp;&nbsp;|&nbsp;&nbsp; <b>رقم الحلقة:</b> ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>اسم الطالب:</b> ...................................................................", size="16px", align="right")
         st.markdown("</div>", unsafe_allow_html=True)
-
+        
         write_rtl("أولاً: أسئلة القرآن الكريم:", size="18px", is_bold=True, color="#1E3A8A")
+        
+q_index = 1
 
-        q_index = 1
+for i in range(q_start_count):
+    while True:
+        sura = random.choice(selected_suwar)
+        maqta = random.choice(suwar_database[sura]["start"])
 
-        for i in range(q_start_count):
-            while True:
-                sura = random.choice(selected_suwar)
-                maqta = random.choice(suwar_database[sura]["start"])
+        key = (sura, maqta["from"], maqta["to"])
 
-                key = (sura, maqta["from"], maqta["to"])
+        if key not in used_questions:
+            used_questions.add(key)
+            break
 
-                if key not in used_questions:
-                    used_questions.add(key)
-                    break
+    write_rtl(
+        f"<b>س {q_index}:</b> اقرأ مستعيناً بالله تعالى من <b>سورة {sura}</b> من قوله تعالى: [ {maqta['from']} ] إلى قوله تعالى: [ {maqta['to']} ].",
+        size="17px"
+    )
 
-            write_rtl(
-                f"<b>س {q_index}:</b> اقرأ مستعيناً بالله تعالى من <b>سورة {sura}</b> من قوله تعالى: [ {maqta['from']} ] إلى قوله تعالى: [ {maqta['to']} ].",
-                size="17px"
-            )
-
-            q_index += 1
-
-        if include_tarbawy:
+    q_index += 1
+   
+if include_tarbawy:
             write_rtl("ثانياً: التربوي", size="18px", is_bold=True, color="#000", align="right")
+            
+            # تنسيق الفقه
+            st.markdown("<p style='direction: rtl; text-align: right;'><b>فقه:</b> .....................................................................................................................................................................................</p>", unsafe_allow_html=True)
+            st.markdown("<p style='direction: rtl; text-align: right;'>.............................................................................................................................................................................................................</p>", unsafe_allow_html=True)
+            
+            # تنسيق العقيدة
+            st.markdown("<p style='direction: rtl; text-align: right;'><b>عقيدة:</b> ...................................................................................................................................................................................</p>", unsafe_allow_html=True)
+            st.markdown("<p style='direction: rtl; text-align: right;'>.............................................................................................................................................................................................................</p>", unsafe_allow_html=True)
+       
+if include_tafsir:
+            write_rtl("ثالثاً: التفسير الإجمالي", size="18px", is_bold=True, color="#000")
+            write_rtl(f"<b>السؤال:</b> اذكر تفسير الآية التالية: {custom_tafsir_verse}", size="16px")
+            write_rtl("جـ: ......................................................................................................................................................................................................", size="15px", color="#6B7280")
 
-            st.markdown(...)
-            st.markdown(...)
+if include_meaning:
+        	st.markdown(r"""
+        <div style="direction: rtl; text-align: right; font-size: 18px;">
+            <p><b>رابعاً: معاني الكلمات:</b></p>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+                <div>١- ........................................... &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ٢- ...........................................</div>
+                <div>٣- ........................................... &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ٤- ...........................................</div>
+                <div>٥- .............................................................................................................................</div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
 
-        if include_tafsir:
-            ...
-
-        if include_meaning:
-            ...
-
-        st.markdown("---")
+st.markdown("---") # فاصل بين النماذج
