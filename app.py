@@ -3,9 +3,6 @@ from fpdf import FPDF
 import arabic_reshaper
 from bidi.algorithm import get_display
 import random 
-import copy
-
-used_questions = set()
 
 st.set_page_config(page_title="صانع اختبارات القرآن الكريم الاحترافي", layout="wide")
 
@@ -208,9 +205,8 @@ q_middle_count = st.sidebar.slider("أسئلة الوسط:", 0, 5, 1)
 generate_button = st.sidebar.button("✨ توليد الورقة")
 
 if generate_button:
-    used_questions.clear()
-
     for model_index in range(1, num_models + 1):
+        random.seed(model_index) 
         st.markdown(f"<h3 style='text-align: center; border-bottom: 2px solid #ccc;'>نموذج رقم ({model_index})</h3>", unsafe_allow_html=True)
         
         st.markdown("<div style='border: 2px solid #000; padding: 15px; border-radius: 8px; background-color: #FAFAFA;'>", unsafe_allow_html=True)
@@ -221,27 +217,19 @@ if generate_button:
         
         write_rtl("أولاً: أسئلة القرآن الكريم:", size="18px", is_bold=True, color="#1E3A8A")
         
-q_index = 1
+        q_index = 1
+        for i in range(q_start_count):
+            sura = random.choice(selected_suwar)
+            macta = random.choice(suwar_database[sura]["start"])
+            write_rtl(f"<b>س {q_index}:</b> اقرأ مستعيناً بالله تعالى من <b>سورة {sura}</b> من قوله تعالى: [ {macta['from']} ] إلى قوله تعالى: [ {macta['to']} ].", size="17px")
+            q_index += 1
+        for j in range(q_middle_count):
+            sura = random.choice(selected_suwar)
+            macta = random.choice(suwar_database[sura]["middle"])
+            write_rtl(f"<b>س {q_index}:</b> اقرأ مستعيناً بالله تعالى من <b>سورة {sura}</b> من قوله تعالى: [ {macta['from']} ] إلى قوله تعالى: [ {macta['to']} ].", size="17px")
+            q_index += 1
 
-for i in range(q_start_count):
-    while True:
-        sura = random.choice(selected_suwar)
-        maqta = random.choice(suwar_database[sura]["start"])
-
-        key = (sura, maqta["from"], maqta["to"])
-
-        if key not in used_questions:
-            used_questions.add(key)
-            break
-
-    write_rtl(
-        f"<b>س {q_index}:</b> اقرأ مستعيناً بالله تعالى من <b>سورة {sura}</b> من قوله تعالى: [ {maqta['from']} ] إلى قوله تعالى: [ {maqta['to']} ].",
-        size="17px"
-    )
-
-    q_index += 1
-   
-if include_tarbawy:
+        if include_tarbawy:
             write_rtl("ثانياً: التربوي", size="18px", is_bold=True, color="#000", align="right")
             
             # تنسيق الفقه
@@ -252,12 +240,12 @@ if include_tarbawy:
             st.markdown("<p style='direction: rtl; text-align: right;'><b>عقيدة:</b> ...................................................................................................................................................................................</p>", unsafe_allow_html=True)
             st.markdown("<p style='direction: rtl; text-align: right;'>.............................................................................................................................................................................................................</p>", unsafe_allow_html=True)
        
-if include_tafsir:
+        if include_tafsir:
             write_rtl("ثالثاً: التفسير الإجمالي", size="18px", is_bold=True, color="#000")
             write_rtl(f"<b>السؤال:</b> اذكر تفسير الآية التالية: {custom_tafsir_verse}", size="16px")
             write_rtl("جـ: ......................................................................................................................................................................................................", size="15px", color="#6B7280")
 
-if include_meaning:
+        if include_meaning:
         	st.markdown(r"""
         <div style="direction: rtl; text-align: right; font-size: 18px;">
             <p><b>رابعاً: معاني الكلمات:</b></p>
@@ -269,4 +257,4 @@ if include_meaning:
         </div>
         """, unsafe_allow_html=True)
 
-st.markdown("---") # فاصل بين النماذج
+        st.markdown("---") # فاصل بين النماذج
