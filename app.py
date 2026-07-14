@@ -221,7 +221,7 @@ if generate_button:
         
         write_rtl("أولاً: أسئلة القرآن الكريم:", size="18px", is_bold=True, color="#1E3A8A")
         
-       q_index = 1
+q_index = 1
 
 for i in range(q_start_count):
     while True:
