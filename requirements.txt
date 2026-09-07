@@ -1,4 +1,2 @@
 streamlit
-fpdf2
-arabic_reshaper
-python-bidi
+python-docx
